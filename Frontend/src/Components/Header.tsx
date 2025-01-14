@@ -1,6 +1,7 @@
 import { Box } from "@mui/system";
 import ContrastIcon from "@mui/icons-material/Contrast";
 import { IconButton, Tooltip, Typography } from "@mui/material";
+import { useNavigate } from "react-router-dom";
 
 interface HeaderProps {
   isDarkThemeOn: boolean;
@@ -8,6 +9,11 @@ interface HeaderProps {
 }
 
 function Header({ isDarkThemeOn, toggleTheme }: HeaderProps) {
+  const navigate = useNavigate();
+
+  const handleClick = () => {
+    navigate("/"); // Redirect to the home page
+  };
   return (
     <Box
       width="fit-parent"
@@ -18,7 +24,12 @@ function Header({ isDarkThemeOn, toggleTheme }: HeaderProps) {
       justifyContent="space-between"
       alignItems="center" // Align items vertically
     >
-      <Typography variant="h4" color={isDarkThemeOn ? "white" : "black"}>
+      <Typography
+        variant="h4"
+        color={isDarkThemeOn ? "white" : "black"}
+        sx={{ cursor: "pointer" }}
+        onClick={handleClick}
+      >
         TODO APP
       </Typography>
       <IconButton onClick={toggleTheme}>
