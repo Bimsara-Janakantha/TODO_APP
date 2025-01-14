@@ -29,7 +29,11 @@ function App() {
           <Header isDarkThemeOn={isDarkThemeOn} toggleTheme={toggleTheme} />
 
           {/* Body */}
-          <Box width={"fit-parent"} height={"calc(100% - 120px)"}>
+          <Box
+            width={"fit-parent"}
+            height={"calc(100% - 120px)"}
+            overflow={"auto"}
+          >
             <Routes>
               <Route path="/" element={<Navigate to="/home" />} />
               <Route path="/home" element={<Home />} />
