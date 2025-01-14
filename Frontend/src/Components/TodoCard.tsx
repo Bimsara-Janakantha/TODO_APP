@@ -60,7 +60,7 @@ function TodoCard({ id, title, content, dueDate, onDelete }: TodoCardProps) {
             color="success"
             onClick={handleDelete}
           >
-            Mark as Completed
+            Mark as Done
           </Button>
         </Grid>
       </Grid>
