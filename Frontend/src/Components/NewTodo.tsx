@@ -1,14 +1,28 @@
 import { Button, Grid2 as Grid, Paper, Stack, TextField } from "@mui/material";
 import { useState } from "react";
 
-function CreateNew() {
+interface TodoProp {
+  title: string;
+  content: string;
+  dueDate: string;
+}
+
+interface NewTodoProps {
+  onAdd: (todo: TodoProp) => void;
+}
+
+function CreateNew({ onAdd }: NewTodoProps) {
   const [title, setTitle] = useState<string>("");
   const [dueDate, setDueDate] = useState<string>("");
   const [content, setContent] = useState<string>("");
 
   const handleSend = () => {
-    // Handle adding the todo
-    console.log({ title, dueDate, content });
+    if (title && dueDate && content) {
+      onAdd({ title, content, dueDate });
+      handleCancel(); // Reset form after adding
+    } else {
+      console.log("All fields are required");
+    }
   };
 
   const handleCancel = () => {
