@@ -7,6 +7,9 @@ import express, { NextFunction, Request, Response } from "express";
 // Http Errors
 import createHttpError, { isHttpError } from "http-errors";
 
+// Routes
+import todoRoutes from "./routes";
+
 const app = express();
 
 app.use(
@@ -32,7 +35,10 @@ app.get("/", (req, res) => {
   res.send("Hello, World! I'm Node App. I can hear you!");
 });
 
-/* // End point not found error
+// Routes
+app.use("/api/todos", todoRoutes);
+
+// End point not found error
 app.use((req, res, next) => {
   next(createHttpError(404, "Endpoint not found!"));
 });
@@ -53,6 +59,6 @@ app.use((err: unknown, req: Request, res: Response, next: NextFunction) => {
 
   res.status(statusCode).json({ error: errMsg });
 });
- */
+
 // Export the app
 export default app;
