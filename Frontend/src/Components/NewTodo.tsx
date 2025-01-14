@@ -1,6 +1,14 @@
 import { Button, Grid2 as Grid, Paper, Stack, TextField } from "@mui/material";
 import { useState } from "react";
 
+// Initial State
+const INITERR: ErrorTodo = {
+  titleErr: false,
+  contentErr: false,
+  dueDateErr: false,
+};
+
+// Interfaces
 interface TodoProp {
   title: string;
   content: string;
@@ -11,16 +19,47 @@ interface NewTodoProps {
   onAdd: (todo: TodoProp) => void;
 }
 
+interface ErrorTodo {
+  titleErr: boolean;
+  contentErr: boolean;
+  dueDateErr: boolean;
+}
+
+function validateEvent(event: TodoProp) {
+  const err: ErrorTodo = { ...INITERR };
+  const today = new Date().toISOString().split("T")[0];
+
+  if (!event.title) {
+    err.titleErr = true;
+  }
+
+  if (!event.content) {
+    err.contentErr = true;
+  }
+
+  if (!event.dueDate || event.dueDate < today) {
+    err.dueDateErr = true;
+  }
+
+  console.log(err);
+  return err;
+}
+
 function CreateNew({ onAdd }: NewTodoProps) {
   const [title, setTitle] = useState<string>("");
   const [dueDate, setDueDate] = useState<string>("");
   const [content, setContent] = useState<string>("");
+  const [err, setErr] = useState<ErrorTodo>(INITERR);
 
   const handleSend = () => {
-    if (title && dueDate && content) {
+    const inputErr = validateEvent({ title, content, dueDate });
+    console.log("Validation: ", inputErr);
+
+    if (!inputErr.titleErr && !inputErr.dueDateErr && !inputErr.contentErr) {
       onAdd({ title, content, dueDate });
       handleCancel(); // Reset form after adding
     } else {
+      setErr(inputErr);
       console.log("All fields are required");
     }
   };
@@ -47,6 +86,8 @@ function CreateNew({ onAdd }: NewTodoProps) {
             label="Title"
             variant="outlined"
             value={title}
+            error={err.titleErr}
+            helperText={err.titleErr && "* This field is requred!"}
             onChange={(e) => setTitle(e.target.value)}
           />
         </Grid>
@@ -57,6 +98,8 @@ function CreateNew({ onAdd }: NewTodoProps) {
             label="Due Date"
             variant="outlined"
             type="date"
+            error={err.dueDateErr}
+            helperText={err.dueDateErr && "* Invalid Date!"}
             value={dueDate}
             onChange={(e) => setDueDate(e.target.value)}
             slotProps={{
@@ -73,6 +116,8 @@ function CreateNew({ onAdd }: NewTodoProps) {
             label="Content"
             variant="outlined"
             value={content}
+            error={err.contentErr}
+            helperText={err.contentErr && "* This field is requred!"}
             multiline
             rows={3}
             onChange={(e) => setContent(e.target.value)}
