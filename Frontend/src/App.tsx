@@ -5,7 +5,7 @@ import { useState } from "react";
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import Header from "./Components/Header";
 import Footer from "./Components/Footer";
-import Home from "./Components/Home";
+import Home from "./Pages/Home";
 
 function App() {
   // State to toggle between light and dark themes
