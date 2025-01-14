@@ -7,7 +7,7 @@ const API_BASE_URL = "http://localhost:5000";
 export async function getData(page: string) {
   try {
     const destination = `${API_BASE_URL}/api/${page}`;
-    console.log(`Fetching data from: ${destination}`);
+    //console.log(`Fetching data from: ${destination}`);
     const response = await axios.get(destination);
     return response;
   } catch (error) {
@@ -20,7 +20,7 @@ export async function getData(page: string) {
 export async function addData(sendData: object, page: string) {
   try {
     const destination = `${API_BASE_URL}/api/${page}`;
-    console.log(`Adding new data in: ${destination}`);
+    //console.log(`Adding new data in: ${destination}`);
     const response = await axios.post(destination, sendData);
     return response;
   } catch (error) {
@@ -33,7 +33,7 @@ export async function addData(sendData: object, page: string) {
 export async function deleteData(sendData: object, page: string) {
   try {
     const destination = `${API_BASE_URL}/api/${page}`;
-    console.log(`Deleting excisting data in: ${destination}`);
+    //console.log(`Deleting excisting data in: ${destination}`);
     const response = await axios.delete(destination, { data: sendData });
     return response;
   } catch (error) {
