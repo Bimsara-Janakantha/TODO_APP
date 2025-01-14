@@ -68,6 +68,10 @@ function Todo() {
     navigate(0);
   };
 
+  const priorityList = todos?.sort((item1, item2) => {
+    return item1.dueDate < item2.dueDate ? -1 : 1;
+  });
+
   return (
     <Box
       display={"flex"}
@@ -93,8 +97,8 @@ function Todo() {
         <Typography variant="h4" textAlign={"center"} mb={2}>
           My Todo List
         </Typography>
-        {todos &&
-          todos.map((todo) => (
+        {priorityList &&
+          priorityList.map((todo) => (
             <TodoCard
               key={todo.id}
               id={todo.id}
