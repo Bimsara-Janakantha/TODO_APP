@@ -1,6 +1,6 @@
 import { Box, Typography } from "@mui/material";
 
-function Footer({ isDarkThemeOn }: { isDarkThemeOn: boolean }) {
+function Footer() {
   return (
     <Box
       width={"fit-parent"}
@@ -9,7 +9,7 @@ function Footer({ isDarkThemeOn }: { isDarkThemeOn: boolean }) {
       alignContent={"center"}
       padding={1}
     >
-      <Typography variant="caption" color={isDarkThemeOn ? "white" : "black"}>
+      <Typography variant="caption" color="primary.dark">
         All rights reserved © 2025 PeraBytes
       </Typography>
     </Box>

@@ -6,6 +6,7 @@ import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import Header from "./Components/Header";
 import Footer from "./Components/Footer";
 import Home from "./Pages/Home";
+import Todo from "./Pages/Todo";
 
 function App() {
   // State to toggle between light and dark themes
@@ -31,15 +32,13 @@ function App() {
           <Box width={"fit-parent"} height={"calc(100% - 120px)"}>
             <Routes>
               <Route path="/" element={<Navigate to="/home" />} />
-              <Route
-                path="/home"
-                element={<Home isDarkThemeOn={isDarkThemeOn} />}
-              />
+              <Route path="/home" element={<Home />} />
+              <Route path="/mytodo" element={<Todo />} />
             </Routes>
           </Box>
 
           {/* Footer */}
-          <Footer isDarkThemeOn={isDarkThemeOn} />
+          <Footer />
         </BrowserRouter>
       </Box>
     </ThemeProvider>

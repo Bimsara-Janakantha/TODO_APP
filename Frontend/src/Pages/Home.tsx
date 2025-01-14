@@ -2,11 +2,7 @@ import { Box, Button, Typography } from "@mui/material";
 import logo from "../assets/logo.svg";
 import { useNavigate } from "react-router-dom";
 
-interface HomeProps {
-  isDarkThemeOn: boolean;
-}
-
-function Home({ isDarkThemeOn }: HomeProps) {
+function Home() {
   const navigate = useNavigate();
 
   const handleClick = () => {
@@ -36,7 +32,7 @@ function Home({ isDarkThemeOn }: HomeProps) {
         />
       </Box>
 
-      <Typography color={isDarkThemeOn ? "white" : "black"} variant="h3">
+      <Typography color="primary.dark" variant="h3">
         Welcome Back
       </Typography>
 
