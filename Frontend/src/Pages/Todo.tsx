@@ -1,4 +1,4 @@
-import { Box } from "@mui/material";
+import { Box, Paper, Typography } from "@mui/material";
 import { useState } from "react";
 import TodoCard from "../Components/TodoCard";
 import CreateNew from "../Components/NewTodo";
@@ -72,17 +72,31 @@ function Todo() {
       <CreateNew />
 
       {/* My TODO List */}
-      {todos.map((todo) => (
-        <TodoCard
-          key={todo.id}
-          id={todo.id}
-          title={todo.title}
-          content={todo.content}
-          dueDate={todo.dueDate}
-          onEdit={handleEdit}
-          onDelete={handleDelete}
-        />
-      ))}
+      <Paper
+        elevation={3}
+        sx={{
+          padding: "15px",
+          width: "90%",
+          gap: "15px",
+          display: "flex",
+          flexDirection: "column",
+        }}
+      >
+        <Typography variant="h4" textAlign={"center"} mb={2}>
+          My Todo List
+        </Typography>
+        {todos.map((todo) => (
+          <TodoCard
+            key={todo.id}
+            id={todo.id}
+            title={todo.title}
+            content={todo.content}
+            dueDate={todo.dueDate}
+            onEdit={handleEdit}
+            onDelete={handleDelete}
+          />
+        ))}
+      </Paper>
     </Box>
   );
 }
