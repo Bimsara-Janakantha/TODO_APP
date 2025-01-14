@@ -32,7 +32,7 @@ function Header({ isDarkThemeOn, toggleTheme }: HeaderProps) {
       >
         TODO APP
       </Typography>
-      <IconButton onClick={toggleTheme}>
+      <IconButton data-testid="cypress-theme-toggle" onClick={toggleTheme}>
         <Tooltip title="Change Theme">
           <ContrastIcon />
         </Tooltip>

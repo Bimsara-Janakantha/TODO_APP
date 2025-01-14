@@ -27,12 +27,17 @@ function Home() {
       >
         <img
           src={logo}
+          data-testid="cypress-pbLogo"
           alt="Pb Logo"
           style={{ width: "100%", maxHeight: "400px", objectFit: "cover" }}
         />
       </Box>
 
-      <Typography color="primary.dark" variant="h3">
+      <Typography
+        data-testid="cypress-welcomeMsg"
+        color="primary.dark"
+        variant="h3"
+      >
         Welcome Back
       </Typography>
 
