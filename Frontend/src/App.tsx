@@ -4,6 +4,7 @@ import { darkTheme, lightTheme } from "./Theme"; // Custom themes
 import { useState } from "react";
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import Header from "./Components/Header";
+import Footer from "./Components/Footer";
 
 function App() {
   // State to toggle between light and dark themes
@@ -31,7 +32,8 @@ function App() {
             {/* Add your routes here */}
           </Routes>
 
-          {/* Footer (Optional) */}
+          {/* Footer */}
+          <Footer />
         </BrowserRouter>
       </Box>
     </ThemeProvider>
