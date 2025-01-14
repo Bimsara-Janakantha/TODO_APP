@@ -49,6 +49,7 @@ function Todo() {
   const [todos, setTodos] = useState<TODOProps[]>(TODOs);
 
   const handleDelete = (id: string) => {
+    console.log("Deleting " + id);
     setTodos(todos.filter((todo) => todo.id !== id));
   };
 
