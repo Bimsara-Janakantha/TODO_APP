@@ -36,9 +36,8 @@ function TodoCard({
 
   return (
     <Card
-      elevation={3}
+      elevation={5}
       sx={{
-        width: "80%",
         padding: "20px",
       }}
     >
