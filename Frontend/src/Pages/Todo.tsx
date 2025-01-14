@@ -1,7 +1,9 @@
 import { Box, Paper, Typography } from "@mui/material";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import TodoCard from "../Components/TodoCard";
 import CreateNew from "../Components/NewTodo";
+import { addData, deleteData, getData } from "../Api/Api";
+import { useNavigate } from "react-router-dom";
 
 const TODOs = [
   {
@@ -46,11 +48,59 @@ interface TODOProps {
 }
 
 function Todo() {
+  const navigate = useNavigate();
   const [todos, setTodos] = useState<TODOProps[]>(TODOs);
+
+  // Load Todo List
+  useEffect(() => {
+    getEvent();
+  }, []);
+
+  const getEvent = async () => {
+    try {
+      const serverResposnse = await getData("todos");
+      console.log("Todo List: ", serverResposnse.data);
+      setTodos(serverResposnse.data);
+    } catch (error) {
+      console.log("Error occured");
+      console.log("Error in fetching todo list!", error);
+    }
+  };
+
+  const addEvent = async (event: object) => {
+    try {
+      const serverResposnse = await addData(event, "todos");
+      console.log("Adding New Event: ", serverResposnse.data);
+    } catch (error) {
+      console.log("Error in adding event!", error);
+    } finally {
+      refresh();
+    }
+  };
+
+  const removeEvent = async (event: object) => {
+    try {
+      const serverResposnse = await deleteData(event, "todos");
+      console.log("Delete Event: ", serverResposnse.data);
+    } catch (error) {
+      console.log("Error in deleting event!", error);
+    } finally {
+      refresh();
+    }
+  };
+
+  const handleAdd = (todo: Omit<TODOProps, "id">) => {
+    console.log("Adding new event:" + todo);
+    addEvent(todo);
+  };
 
   const handleDelete = (id: string) => {
     console.log("Deleting " + id);
-    setTodos(todos.filter((todo) => todo.id !== id));
+    removeEvent({ id });
+  };
+
+  const refresh = () => {
+    navigate(0);
   };
 
   return (
@@ -62,7 +112,7 @@ function Todo() {
       gap={3}
     >
       {/* Create New */}
-      <CreateNew />
+      <CreateNew onAdd={handleAdd} />
 
       {/* My TODO List */}
       <Paper
