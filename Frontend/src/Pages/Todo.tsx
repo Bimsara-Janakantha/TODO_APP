@@ -10,7 +10,7 @@ function Todo() {
       alignItems={"center"}
       height={"100%"}
       py={3}
-      gap={2}
+      gap={3}
     >
       {/* Create New */}
       <CreateNew />
