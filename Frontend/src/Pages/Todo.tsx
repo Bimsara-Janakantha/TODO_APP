@@ -52,14 +52,6 @@ function Todo() {
     setTodos(todos.filter((todo) => todo.id !== id));
   };
 
-  const handleEdit = (id: string) => {
-    const todoToEdit = todos.find((todo) => todo.id === id);
-    if (todoToEdit) {
-      console.log(`Editing Todo:`, todoToEdit);
-      // Add edit functionality as required
-    }
-  };
-
   return (
     <Box
       display={"flex"}
@@ -92,7 +84,6 @@ function Todo() {
             title={todo.title}
             content={todo.content}
             dueDate={todo.dueDate}
-            onEdit={handleEdit}
             onDelete={handleDelete}
           />
         ))}
