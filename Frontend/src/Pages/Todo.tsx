@@ -5,7 +5,7 @@ import CreateNew from "../Components/NewTodo";
 import { addData, deleteData, getData } from "../Api/Api";
 import { useNavigate } from "react-router-dom";
 
-const TODOs = [
+/* const TODOs = [
   {
     id: "1",
     title: "Complete Project Proposal",
@@ -38,7 +38,7 @@ const TODOs = [
       "Discuss project requirements and clarify deliverables for the next phase.",
     dueDate: "2025-01-19",
   },
-];
+]; */
 
 interface TODOProps {
   id: string;
@@ -49,7 +49,7 @@ interface TODOProps {
 
 function Todo() {
   const navigate = useNavigate();
-  const [todos, setTodos] = useState<TODOProps[]>(TODOs);
+  const [todos, setTodos] = useState<TODOProps[]>();
 
   // Load Todo List
   useEffect(() => {
@@ -128,16 +128,17 @@ function Todo() {
         <Typography variant="h4" textAlign={"center"} mb={2}>
           My Todo List
         </Typography>
-        {todos.map((todo) => (
-          <TodoCard
-            key={todo.id}
-            id={todo.id}
-            title={todo.title}
-            content={todo.content}
-            dueDate={todo.dueDate}
-            onDelete={handleDelete}
-          />
-        ))}
+        {todos &&
+          todos.map((todo) => (
+            <TodoCard
+              key={todo.id}
+              id={todo.id}
+              title={todo.title}
+              content={todo.content}
+              dueDate={todo.dueDate}
+              onDelete={handleDelete}
+            />
+          ))}
       </Paper>
     </Box>
   );
