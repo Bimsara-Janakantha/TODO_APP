@@ -1,11 +1,5 @@
 import { RequestHandler } from "express";
-
-interface Todo {
-  id: string;
-  title: string;
-  content: string;
-  dueDate: string;
-}
+import { Todo } from "./models";
 
 let todos: Todo[] = [
   {
@@ -44,6 +38,7 @@ let todos: Todo[] = [
 
 export const getTodos: RequestHandler = async (req, res, next) => {
   try {
+    console.log("Readding Todos!");
     res.status(200).json(todos);
   } catch (error) {
     next(error);
@@ -61,6 +56,7 @@ export const addTodo: RequestHandler = async (req, res, next) => {
       dueDate,
     };
     todos.push(newTodo);
+    console.log("New Todo added successfully!");
     res.status(201).json(newTodo);
   } catch (error) {
     next(error);
