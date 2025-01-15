@@ -42,12 +42,13 @@ function Home() {
       </Typography>
 
       <Button
+        data-testid="cypress-todoButton"
         color="primary"
         variant="contained"
         size="large"
         onClick={handleClick}
       >
-        <Typography fontSize={18}>View My TODO</Typography>
+        <Typography fontSize={18}>VIEW MY TODO</Typography>
       </Button>
     </Box>
   );

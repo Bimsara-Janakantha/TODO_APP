@@ -1,17 +1,34 @@
+// Home Page Testing
 describe("Home Page", () => {
-  it("should load the Home Page", () => {
+  // Test 01: Should load the Home Page properly
+  it("Test 01: should load the Home Page properly", () => {
+    // Visit
     cy.visit("/home");
-    cy.contains("TODO APP"); // Ensure the page title is present
+
+    // Check the logo
+    cy.get('[data-testid="cypress-pbLogo"]').should("be.visible");
+
+    // Check Welcome Note
+    cy.get('[data-testid="cypress-welcomeMsg"]').should(
+      "have.text",
+      "Welcome Back"
+    );
+
+    // Check the todo button
+    cy.get('[data-testid="cypress-todoButton"]')
+      .should("be.visible")
+      .should("have.text", "VIEW MY TODO");
   });
 
-  it('should navigate to Todo page when "View My TODO" button is clicked', () => {
+  // Test 02: Should navigate to Todo page when "View My TODO" button is clicked
+  it('Test 02: Should navigate to Todo page when "View My TODO" button is clicked', () => {
+    // Visit Home Page
     cy.visit("/");
-    cy.get("button").contains("View My TODO").click();
-    cy.url().should("include", "/mytodo"); // Ensure navigation to the Todo page
-  });
 
-  it("should display the welcome message for logged-in users", () => {
-    cy.visit("/");
-    cy.contains("Welcome Back"); // Adjust if your text differs
+    // Find the button
+    cy.get('[data-testid="cypress-todoButton"]').click();
+
+    // Ensure navigation to the Todo page
+    cy.url().should("include", "/mytodo");
   });
 });
