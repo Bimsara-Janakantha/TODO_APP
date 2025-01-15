@@ -4,13 +4,14 @@ This is used to demonstrate the Cypress end-to-end testing framework.
 ---
 
 ## Commands
-* Start Frontend Server
+
+Start Frontend Server
 > npm start
 
-* Start Backend Server
+Start Backend Server
 > npm start
 
-* Start Cypress
+Start Cypress
 > run cy:open
 
 
