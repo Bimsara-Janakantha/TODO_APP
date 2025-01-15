@@ -35,6 +35,7 @@ export async function deleteData(sendData: object, page: string) {
     const destination = `${API_BASE_URL}/api/${page}`;
     //console.log(`Deleting excisting data in: ${destination}`);
     const response = await axios.delete(destination, { data: sendData });
+    console.log("Response: ", response);
     return response;
   } catch (error) {
     console.error("Deleting data error!", error);
