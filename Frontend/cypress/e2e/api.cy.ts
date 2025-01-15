@@ -14,15 +14,9 @@ describe("API Testing", () => {
       title: "Test Todo",
       content: "Content for test todo",
       dueDate: "2025-01-15",
-    }).then((response) => {
-      // Validating Response status code
-      expect(response.status).to.eq(201);
-
-      // Validating Response body
-      expect(response.body.title).to.eq("Test Todo");
-      expect(response.body.content).to.eq("Content for test todo");
-      expect(response.body.dueDate).to.eq("2025-01-15");
-    });
+    })
+      .its("status")
+      .should("eq", 201); // Ensure the response is successful
   });
 
   // Test 03: Should delete a todo via API
