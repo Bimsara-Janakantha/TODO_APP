@@ -35,7 +35,7 @@ export const deleteTodo: RequestHandler = async (req, res, next) => {
   try {
     const { id } = req.body;
     todos = todos.filter((todo) => todo.id !== id);
-    res.status(201).json(todos);
+    res.status(200).json(todos);
   } catch (error) {
     next(error);
   }
