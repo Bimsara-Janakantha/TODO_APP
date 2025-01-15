@@ -16,6 +16,7 @@ function Header({ isDarkThemeOn, toggleTheme }: HeaderProps) {
   };
   return (
     <Box
+      data-testid="cypress-header-background"
       width="fit-parent"
       height="50px"
       bgcolor={isDarkThemeOn ? "black" : "white"}
@@ -26,6 +27,7 @@ function Header({ isDarkThemeOn, toggleTheme }: HeaderProps) {
     >
       <Typography
         variant="h4"
+        data-testid="cypress-logo"
         color={isDarkThemeOn ? "white" : "black"}
         sx={{ cursor: "pointer" }}
         onClick={handleClick}
