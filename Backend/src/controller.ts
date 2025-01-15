@@ -25,7 +25,7 @@ export const addTodo: RequestHandler = async (req, res, next) => {
     };
     todos.push(newTodo);
     console.log("New Todo added successfully!");
-    res.status(201).json(newTodo);
+    res.status(201).json("Success");
   } catch (error) {
     next(error);
   }
@@ -36,7 +36,7 @@ export const deleteTodo: RequestHandler = async (req, res, next) => {
     const { id } = req.body;
     todos = todos.filter((todo) => todo.id !== id);
     console.log("Item " + id + " deleted successfully.");
-    res.status(200).json(todos);
+    res.status(200).json("Success");
   } catch (error) {
     next(error);
   }
