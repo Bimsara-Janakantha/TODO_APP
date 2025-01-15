@@ -73,6 +73,7 @@ function CreateNew({ onAdd }: NewTodoProps) {
 
   return (
     <Paper
+      data-testid="cypress-NewTodoSection"
       elevation={3}
       sx={{
         width: "90%",
@@ -82,6 +83,7 @@ function CreateNew({ onAdd }: NewTodoProps) {
       <Grid container spacing={2}>
         <Grid size={{ xs: 12, lg: 10 }}>
           <TextField
+            data-testid="cypress-NewTitle"
             fullWidth
             label="Title"
             variant="outlined"
@@ -94,6 +96,7 @@ function CreateNew({ onAdd }: NewTodoProps) {
 
         <Grid size={{ xs: 12, lg: 2 }}>
           <TextField
+            data-testid="cypress-NewDate"
             fullWidth
             label="Due Date"
             variant="outlined"
@@ -112,6 +115,7 @@ function CreateNew({ onAdd }: NewTodoProps) {
 
         <Grid size={{ xs: 12 }}>
           <TextField
+            data-testid="cypress-NewContent"
             fullWidth
             label="Content"
             variant="outlined"
@@ -127,6 +131,7 @@ function CreateNew({ onAdd }: NewTodoProps) {
         <Grid size={{ xs: 12 }}>
           <Stack spacing={2} direction="row" justifyContent="center" gap={10}>
             <Button
+              data-testid="cypress-CancelBtn"
               variant="outlined"
               sx={{ width: 150 }}
               onClick={handleCancel}
@@ -134,6 +139,7 @@ function CreateNew({ onAdd }: NewTodoProps) {
               Cancel
             </Button>
             <Button
+              data-testid="cypress-AddBtn"
               variant="contained"
               sx={{ width: 150 }}
               onClick={handleSend}

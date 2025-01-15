@@ -15,6 +15,7 @@ function TodoCard({ id, title, content, dueDate, onDelete }: TodoCardProps) {
 
   return (
     <Card
+      data-testid="cypress-TodoCard"
       elevation={5}
       sx={{
         padding: "20px",
@@ -22,7 +23,7 @@ function TodoCard({ id, title, content, dueDate, onDelete }: TodoCardProps) {
     >
       <Grid container spacing={2}>
         {/* Title */}
-        <Grid size={{ xs: 8, lg: 10 }}>
+        <Grid data-testid="CardTitle" size={{ xs: 8, lg: 10 }}>
           <Typography variant="h5" color="primary">
             {title}
           </Typography>
@@ -30,7 +31,7 @@ function TodoCard({ id, title, content, dueDate, onDelete }: TodoCardProps) {
 
         {/* Due Date */}
         <Grid size={{ xs: 4, lg: 2 }} textAlign={"end"}>
-          <Typography variant="subtitle1" color="primary">
+          <Typography data-testid="CardDue" variant="subtitle1" color="primary">
             Due On: {dueDate}
           </Typography>
         </Grid>
@@ -38,6 +39,7 @@ function TodoCard({ id, title, content, dueDate, onDelete }: TodoCardProps) {
         {/* Content */}
         <Grid size={{ xs: 12, lg: 10 }}>
           <Typography
+            data-testid="CardContent"
             variant="body1"
             color="text.secondary"
             textAlign={"justify"}
@@ -55,6 +57,7 @@ function TodoCard({ id, title, content, dueDate, onDelete }: TodoCardProps) {
           justifyContent={"end"}
         >
           <Button
+            data-testid="CardButton"
             variant="contained"
             size="small"
             color="success"
