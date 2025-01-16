@@ -70,7 +70,7 @@ npm start
 ### Start Cypress
 We can use the following CLI to start the Cypress
 ``` powershell
-run cy:open
+npm run cy:open
 ```
 
 
