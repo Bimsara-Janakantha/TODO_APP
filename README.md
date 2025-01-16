@@ -5,17 +5,73 @@ This is used to demonstrate the Cypress end-to-end testing framework.
 
 ---
 
-## Commands
+## Cypress Setup for a React Project
 
-Start Frontend Server
-> npm start
+### Prerequisites
+1. A React project initialized using `create-react-app` or other setups.
+2. Node.js and npm/yarn installed on your system.
 
-Start Backend Server
-> npm start
+### Installation
+1. Redirect to the working directory.
+2. Run the following command to add Cypress
+``` powershell
+npm install cypress --save-dev
+```
 
-Start Cypress
-> run cy:open
+### Open Cypress
+After installation, open Cypress for the first time to initialize its configuration
+``` powershell
+npx cypress open
+```
 
+This command creates a cypress folder in your project and adds a default `cypress.config.ts` file.
+
+### Update Cypress Config 
+Edit cypress.config.ts to customize the base URL for the React app:
+
+```typescript
+
+import { defineConfig } from "cypress";
+
+export default defineConfig({
+  e2e: {
+    baseUrl: "http://localhost:5173", // Enter base URL here
+  },
+});
+```
+
+### Update `package.json` 
+Update the `package.json` file with the following script.
+```json
+"scripts": {
+    "cy:open": "cypress open"
+},
+```
+
+Make sure to remove the following part from the `package.json` file.
+```json
+{
+  "type": "module"
+}
+```
+
+### Start Frontend Server
+We can use the following CLI to start the frontend server
+``` powershell
+npm start
+```
+
+### Start Backend Server
+We can use the following CLI to start the backend server
+``` powershell
+npm start
+```
+
+### Start Cypress
+We can use the following CLI to start the Cypress
+``` powershell
+run cy:open
+```
 
 
 ---
