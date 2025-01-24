@@ -36,7 +36,7 @@ export const deleteTodo: RequestHandler = async (req, res, next) => {
     const { id } = req.body;
     todos = todos.filter((todo) => todo.id !== id);
     console.log("Item " + id + " deleted successfully.");
-    res.status(200).json("Success");
+    res.status(201).json("Success");
   } catch (error) {
     next(error);
   }
